@@ -7,7 +7,8 @@ Based on a oneliner shared by Extravenger, I decided to write a python script to
 
 
 ## Usage
-> [!warning] It should run with sudo or root privileges since the file `/etc/hosts` will be adjusted.
+> [!WARNING]
+> > It should run with sudo or root privileges since the file `/etc/hosts` will be adjusted.
 
 Perhaps you want to create a backup of this file first.
 
