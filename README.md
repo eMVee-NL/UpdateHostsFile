@@ -28,4 +28,4 @@ python3 Update-Hosts-File.py --all
 ```
 
 ## Issue
-Somehow I got issues in retrieveing the correct output with LDAP. Not sure why, if you know and can fix it. Let me know!
+Somehow I got issues in retrieving the correct output with LDAP. Not sure why, if you know and can fix it. Let me know!
