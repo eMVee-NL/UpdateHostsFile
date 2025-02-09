@@ -17,14 +17,14 @@ Use `--quick` argument to run a quick enumeration and add the results based on S
 python3 Update-Hosts-File.py --quick
 ```
 
-Use to `--protocol <PROTOCOL>` argument to run a specific enumeration and add the results based on the provided protocol
+Use the `--protocol <PROTOCOL>` argument to run a specific enumeration and add the results based on the provided protocol
 ```bash
 python3 Update-Hosts-File.py --protocol rdp
 ```
 
-Use to `--all`  argument to run all protocols with netexec. This might take a while. 
+Use the `--all`  argument to run all protocols with netexec. This might take a while. 
 ```bash
-python3 Update-Hosts-File.py --protocol rdp
+python3 Update-Hosts-File.py --all
 ```
 
 ## Issue
