@@ -4,19 +4,24 @@ import os
 import sys
 import argparse
 
+# Define color codes
+GREEN = '\033[92m'
+RED = '\033[91m'
+BLUE = '\033[94m'
+YELLOW = '\033[93m'
+RESET = '\033[0m'
+
 def banner():
-    print('''\033[92m
+    print(f'''{GREEN}
        __  __          __      __       __  __           __       _______ __   
       / / / /___  ____/ /___ _/ /____  / / / /___  _____/ /______/ ____(_) /__ 
-     / / / / __ \/ __  / __ `/ __/ _ \/ /_/ / __ \/ ___/ __/ ___/ /_  / / / _ \\
+     / / / / __ \\/ __  / __ `/ __/ _ \\/ /_/ / __ \\/ ___/ __/ ___/ /_  / / / _ \\
     / /_/ / /_/ / /_/ / /_/ / /_/  __/ __  / /_/ (__  ) /_(__  ) __/ / / /  __/
-    \____/ .___/\__,_/\__,_/\__/\___/_/ /_/\____/____/\__/____/_/   /_/_/\___/ 
-        /_/  \033[0m    
-                    \033[91m with NetExec under the hood!     \033[0m   
+    \\____/ .___/\\__,_/\\__,_/\\__/\\___/_/ /_/\\____/____/\\__/____/_/   /_/_/\\___/ 
+        /_/  {RESET}    
+                    {RED} with NetExec under the hood!     {RESET}   
 
-
-    Created by \033[92meMVee\033[0m and inspired by \033[92mExtravenger\033[0m during OSEP course
-
+    Created by {GREEN}eMVee{RESET} and inspired by {GREEN}Extravenger{RESET} during OSEP course
     ''')
 
 def check_root():
