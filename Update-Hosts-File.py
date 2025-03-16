@@ -97,10 +97,12 @@ def main():
 
     # Set up argument parsing
     parser = argparse.ArgumentParser(description="Enumerate network protocols and update /etc/hosts.")
+    parser.add_argument('--subnet', type=str, help="Subnet to scan.")
     parser.add_argument('--quick', action='store_true', help="Run only the SMB protocol.")
     parser.add_argument('--all', action='store_true', help="Run all protocols.")
     parser.add_argument('--protocol', type=str, choices=["smb", "winrm", "rdp", "mssql", "ldap", "vnc", "ssh", "wmi", "ftp"],
                         help="Specify a single protocol to run.")
+    parser.add_argument('--protocols', type=str, help="Specify comma separated multiple protocols to run. (smb,rdp)")
 
     args = parser.parse_args()
 
@@ -115,6 +117,9 @@ def main():
         if confirm != 'y':
             print("Please use --quick or --protocol options.")
             sys.exit(0)
+    elif args.protocols:
+        protocols = args.protocols.strip("").split(",")
+        # print(protocols)
     elif args.protocol:
         protocols = [args.protocol]
     else:
@@ -123,16 +128,21 @@ def main():
 
     try:
         # Ask the user for the target subnet
-        target = input("Enter the target subnet (e.g., 172.16.120.0/24): ")
+        print("Enter the target subnet (e.g., 172.16.120.0/24): ")
+        if args.subnet:
+            target = args.subnet
+        else:
+            exit("[!] Please specify the subnet")
 
         # Prepare to write to /etc/hosts
         with open("/etc/hosts", "a") as hosts_file:
-            hosts_file.write("# [!] This has been found by NETEXEC\n")
+            hosts_file.write(f"# The below entries belong to {target}\n")
+
 
             # Loop through each protocol
             for protocol in protocols:
                 print(f"\033[92m[I] Enumerating via {protocol} protocol...\033[0m")
-                command = f"netexec {protocol} {target}"
+                command = f"netexec --no-progress {protocol} {target}"
                 output = run_command(command)
 
                 # Parse the output and write to /etc/hosts
